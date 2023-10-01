@@ -1,5 +1,6 @@
 package ru.gorodnyuk.statisticsservice.service;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -14,6 +15,7 @@ public class StatisticsService {
 
     private final StatisticsRepository statisticsRepository;
 
+    @Transactional
     public void calculate(String ip) {
         if (StringUtils.hasText(ip)) {
             if (statisticsRepository.existsByIp(ip)) {
