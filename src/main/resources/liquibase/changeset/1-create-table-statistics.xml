@@ -19,13 +19,14 @@
             </column>
 
             <column name="ip"
-                    type="varchar(36)"
+                    type="varchar(255)"
                     remarks="IP адрес, с которого был запрос">
                 <constraints nullable="false"/>
             </column>
 
             <column name="counter"
                     type="bigint"
+                    defaultValue="0"
                     remarks="Счетчик посещений с конкретного ip адреса">
                 <constraints nullable="false"/>
             </column>
