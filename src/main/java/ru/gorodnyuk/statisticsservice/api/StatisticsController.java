@@ -15,7 +15,7 @@ public class StatisticsController {
     private final StatisticsService statisticsService;
 
     @PostMapping
-    public void createStatistics(HttpServletRequest httpServletRequest) {
-        statisticsService.process(httpServletRequest.getRemoteAddr());
+    public void calculateStatistics(HttpServletRequest httpServletRequest) {
+        statisticsService.calculate(httpServletRequest.getRemoteAddr());
     }
 }
