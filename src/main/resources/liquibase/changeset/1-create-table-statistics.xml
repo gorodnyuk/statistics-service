@@ -26,7 +26,6 @@
 
             <column name="counter"
                     type="bigint"
-                    defaultValue="1"
                     remarks="Счетчик посещений с конкретного ip адреса">
                 <constraints nullable="false"/>
             </column>
