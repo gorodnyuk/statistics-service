@@ -3,6 +3,7 @@ package ru.gorodnyuk.statisticsservice.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import ru.gorodnyuk.statisticsservice.model.StatisticsEntity;
 import ru.gorodnyuk.statisticsservice.repository.StatisticsRepository;
 
 @Service
@@ -15,7 +16,11 @@ public class StatisticsService {
 
     public void calculate(String ip) {
         if (StringUtils.hasText(ip)) {
-            statisticsRepository.updateStatisticByIp(ip);
+            if (statisticsRepository.existsByIp(ip)) {
+                statisticsRepository.updateStatisticByIp(ip);
+            } else {
+                statisticsRepository.save(new StatisticsEntity(ip));
+            }
         } else {
             statisticsRepository.updateStatisticByIp(UNKNOWN_IP);
         }
